@@ -226,10 +226,14 @@ section{padding:clamp(64px,9vw,116px) 0}
 .filters button:hover{border-color:var(--line-2);color:#fff}
 .filters button[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
 
-.masonry{columns:3;column-gap:14px}
-@media(max-width:900px){.masonry{columns:2}}
-@media(max-width:560px){.masonry{columns:1}}
-.masonry .tile{margin:0 0 14px;break-inside:avoid;display:block}
+/* One uniform photo grid shared by the home page and the gallery, so the two
+   read as the same system. Every tile is the same 3:4 box and the photo is
+   cropped to fill it — no ragged column bottoms. Tap a tile for the full frame. */
+.photo-grid{grid-template-columns:repeat(3,1fr)}
+.photo-grid .tile{aspect-ratio:3/4}
+/* Two up rather than one on phones: these are thumbnails you tap to enlarge,
+   and 60 full-width photos would be an endless scroll on the gallery. */
+@media(max-width:900px){.photo-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
 .tile.hide{display:none}
 
 /* ---------- lightbox ---------- */
