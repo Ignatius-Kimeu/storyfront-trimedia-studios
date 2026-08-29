@@ -126,7 +126,11 @@ section{padding:clamp(64px,9vw,116px) 0}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:92vh;display:grid;align-items:end;padding:0;overflow:hidden}
+/* Content is pinned to the bottom of the hero, so on a short laptop window it
+   rides upward — and with no top padding it ended up underneath the fixed
+   header. This reserves the header's height plus clearance; once the copy no
+   longer fits in 92vh the hero simply grows instead of tucking under. */
+.hero{position:relative;min-height:92vh;display:grid;align-items:end;padding:96px 0 0;overflow:hidden}
 .hero-img{position:absolute;inset:0}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
 .hero-img::after{
